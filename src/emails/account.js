@@ -11,7 +11,6 @@ mg.messages.create('sandboxcb473e94b3604c06828f1a1586cbbae5.mailgun.org', {
 	subject: "Welcome To Task-Manager",
 	text: `Welcome ${name} to Rishabh Khetan's Task App `,
 })
-.then(msg => console.log(msg)) // logs response data
 .catch(err => console.log(err)); // logs any error
 }
 

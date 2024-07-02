@@ -53,6 +53,8 @@ router.post('/users/logoutAll',auth, async (req,res)=>{
 })
 
 router.get('/users/me',auth,async (req,res)=>{
+    if(!req.user)
+        return res.status(401).send()
     res.send(req.user)
 })
 
@@ -85,6 +87,8 @@ router.patch('/users/me',auth,async (req,res)=>{
 
 router.delete('/users/me',auth, async (req,res)=>{
     try {
+            if(!req.user)
+                return res.status(401).send()
         await req.user.deleteAllTasksAndUser()
         sendCancellationEmail(req.user.email, req.user.name)
         res.send(req.user)
